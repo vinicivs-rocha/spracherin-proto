@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package subjects.v1;
+
+option go_package = "github.com/vinicivs-rocha/spracherin/spracherin-proto/gen/go/subjects/v1;subjectsv1";
+
+service SubjectService {
+  rpc ListSubjects(ListSubjectsRequest) returns (ListSubjectsResponse);
+  rpc GetSubject(GetSubjectRequest) returns (GetSubjectResponse);
+  rpc DescribeSubject(DescribeSubjectRequest) returns (DescribeSubjectResponse);
+  rpc RemoveSubject(RemoveSubjectRequest) returns (RemoveSubjectResponse);
+}
+
+message SubjectSummary {
+  string id = 1;
+  string title = 2;
+}
+
+message SubjectDetail {
+  string id = 1;
+  string title = 2;
+  string description = 3;
+}
+
+message ListSubjectsRequest {}
+
+message ListSubjectsResponse {
+  repeated SubjectSummary subjects = 1;
+}
+
+message GetSubjectRequest {
+  string id = 1;
+}
+
+message GetSubjectResponse {
+  SubjectDetail subject = 1;
+}
+
+message DescribeSubjectRequest {
+  string id = 1;
+  string title = 2;
+  string description = 3;
+}
+
+message DescribeSubjectResponse {
+  string id = 1;
+}
+
+message RemoveSubjectRequest {
+  string id = 1;
+}
+
+message RemoveSubjectResponse {}
